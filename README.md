@@ -1,4 +1,4 @@
-# Applying Text-to-SQL in Process Mining: Leveraging Natural Language for Data and Process-Oriented Insights
+# Text-to-SQL in Process Mining: Revisiting Strategies and Expanding the Discussion
 
 This repository includes the resources referenced in the paper, as well as complete results for metrics Exact Match Accuracy (EM) and Execution Accuracty (EX) for Portuguese and English language. Bellow the details of each resource:
 
