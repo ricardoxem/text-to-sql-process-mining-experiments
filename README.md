@@ -79,10 +79,32 @@ This section contains the complete results of models evaluations using Exact Mat
     <td><b>40.12%</b></td>
     <td>24.89%</td>
     <td>28.04%</td>
-    <td><b>40.12%</b></td>
+    <td>30.45</td>
     <td>24.95%</td>
   </tr>
-   <tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>three-shot</td>
+    <td>-</td>  
+    <td><b>46.10%</b></td>
+    <td>-</td>
+    <td>31.36%</td>
+    <td>-</td>
+    <td>30.76</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>five-shot</td>
+    <td>-</td>  
+    <td><b>48.46%</b></td>
+    <td>-</td>
+    <td>32.87%</td>
+    <td>-</td>
+    <td>34.80</td>
+  </tr>
+  <tr>
     <td></td>
     <td>Portuguese</td>
     <td>zero-shot</td>
@@ -99,10 +121,32 @@ This section contains the complete results of models evaluations using Exact Mat
     <td>one-shot</td>
     <td>36.01%</td>  
     <td><b>38.01%</b></td>
-    <td>23.99%</td>
+    <td>27.43%</td>
     <td>27.67%</td>
-    <td><b>38.01%</b></td>
+    <td>23.99</td>
     <td>19.03%</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>three-shot</td>
+    <td>-</td>  
+    <td><b>42.66%</b></td>
+    <td>-</td>
+    <td>32.57%</td>
+    <td>-</td>
+    <td>21.51</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>five-shot</td>
+    <td>-</td>  
+    <td><b>45.14%</b></td>
+    <td>-</td>
+    <td>33.90%</td>
+    <td>-</td>
+    <td>24.59</td>
   </tr>
   <tr>
     <td></td>
@@ -139,6 +183,28 @@ This section contains the complete results of models evaluations using Exact Mat
   </tr>
   <tr>
     <td></td>
+    <td></td>
+    <td>three-shot</td>
+    <td>-</td>
+    <td><b>55.53%</b></td>  
+    <td>-</td>
+    <td>51.54%</td>
+    <td>-</td>
+    <td>51.12%</td>
+  </tr>
+    <tr>
+    <td></td>
+    <td></td>
+    <td>five-shot</td>
+    <td>-</td>
+    <td><b>57.16%</b></td>  
+    <td>-</td>
+    <td>53.78%</td>
+    <td>-</td>
+    <td>53.53%</td>
+  </tr>
+  <tr>
+    <td></td>
     <td>Portuguese</td>
     <td>zero-shot</td>
     <td>44.53%</td>  
@@ -158,6 +224,28 @@ This section contains the complete results of models evaluations using Exact Mat
     <td>49.49%</td>
     <td>35.29%</td>
     <td>43.50%</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>three-shot</td>
+    <td>-</td>
+    <td><b>55.23%</b></td>  
+    <td>-</td>
+    <td>54.26%</td>
+    <td>-</td>
+    <td>49.00%</td>
+  </tr>
+    <tr>
+    <td></td>
+    <td></td>
+    <td>five-shot</td>
+    <td>-</td>
+    <td><b>56.25%</b></td>  
+    <td>-</td>
+    <td>55.89%</td>
+    <td>-</td>
+    <td>50.21%</td>
   </tr>
 </table>
 
@@ -284,14 +372,6 @@ This section contains the complete results of models evaluations using Exact Mat
 |  S(UE)<sup>+</sup> | SELECT ((UNION\|EXCEPT) SELECT)<sup>+</sup> |
 |  WS | WITH (SELECT)<sup>+</sup> SELECT | 
 
-
-**Exact Match Accuracy**
-
-*English*
-![My Image](graphs_results/results_no_hardness_EM.png)
-
-*Portuguese*
-![My Image](graphs_results/results_no_hardness_EM_pt.png)
 
 **Execution Accuracy**
 
