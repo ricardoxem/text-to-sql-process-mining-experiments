@@ -1,0 +1,24 @@
+{
+  "run": {
+    "name": "ollama_pt_0shot_llama3",
+    "provider": "ollama",
+    "model": "llama3",
+    "language": "portuguese",
+    "questions_path": "results/portuguese/openAI-representation_0-shot/questions.json",
+    "ollama": {
+      "base_url": "http://localhost:11434"
+    }
+  },
+  "questions_path": "/home/ricardoxem/Documents/RICARDOXEM/repositories/text-to-sql-process_mining/results/portuguese/openAI-representation_0-shot/questions.json",
+  "started_at_utc": "2026-06-09T23:14:31.669577+00:00",
+  "request": {
+    "instructions": "Return only one SQLite SQL query. Do not include explanation, markdown, or code fences.",
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_output_tokens": 512,
+    "timeout_seconds": 120,
+    "max_retries": 3,
+    "sleep_between_requests_seconds": 0.0
+  },
+  "total_questions": 1655
+}

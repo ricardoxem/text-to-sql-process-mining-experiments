@@ -1,0 +1,4 @@
+google-generativeai
+func_timeout
+nltk
+sqlparse

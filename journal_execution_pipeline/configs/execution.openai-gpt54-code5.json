@@ -1,0 +1,36 @@
+{
+  "output_root": "journal_execution_pipeline/outputs",
+  "request": {
+    "instructions": "Return only one SQLite SQL query. Do not include explanation, markdown, or code fences.",
+    "max_output_tokens": 512,
+    "timeout_seconds": 180,
+    "max_retries": 5,
+    "sleep_between_requests_seconds": 0.0
+  },
+  "runs": [
+    {
+      "name": "openai_en_code5_gpt54",
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "reasoning_effort": "none",
+      "language": "english",
+      "questions_path": "results/english/code-representation_5-shot/questions.json",
+      "pricing_per_million_tokens": {
+        "input": 2.5,
+        "output": 15.0
+      }
+    },
+    {
+      "name": "openai_pt_code5_gpt54",
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "reasoning_effort": "none",
+      "language": "portuguese",
+      "questions_path": "results/portuguese/code-representation_5-shot/questions.json",
+      "pricing_per_million_tokens": {
+        "input": 2.5,
+        "output": 15.0
+      }
+    }
+  ]
+}

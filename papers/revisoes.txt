@@ -1,0 +1,77 @@
+Reviewer 1: 1. Excellence (Score: 4.0 / 5)
+
+Strengths:
+
+Clear and systematic research design, combining EM/EX metrics with SQL template-based complexity analysis.
+
+Novel focus on process mining, an under explored domain in text-to-SQL research.
+
+Creation and use of a bilingual benchmark dataset (text2SQL4PM), enhancing reproducibility and future benchmarking.
+
+Integration of multiple prompt strategies (zero, one, three, five-shot) and cross-lingual evaluation.
+
+Weaknesses:
+
+Tested LLMs are not the most advanced (GPT-4, Claude, etc.), limiting the state-of-the-art relevance.
+
+Limited exploration of error typologies—misinterpretations are mentioned but not deeply illustrated with examples.
+
+SQL focus, while justified, reduces immediate alignment with process mining practice (which often uses PQL).
+
+Justification:
+The manuscript demonstrates originality, technical depth, and methodological rigor, but would benefit from broader model selection and deeper qualitative analysis.
+
+2. Impact (Score: 3.5 / 5)
+
+Strengths:
+
+Offers an important baseline for future research linking natural language interfaces and process mining.
+
+Dataset and methodology are openly available, ensuring potential reuse and citation.
+
+Findings are relevant for both academic and practical communities in process mining and database querying.
+
+Weaknesses:
+
+Limited discussion of industrial/practical adoption scenarios (e.g., integration into BI or BPM tools).
+
+Modest performance levels (max ~48% EM, 57% EX) reduce immediate applicability for practitioners.
+
+Impact beyond academia is hinted but not deeply developed—especially regarding business users or real process mining software.
+
+Justification:
+The paper has clear scientific value but limited short-term industrial or societal uptake. Stronger positioning of results in real-world contexts would increase impact.
+
+3. Implementation (Score: 4.0 / 5)
+
+Strengths:
+
+Well-structured and clearly written manuscript, with logical progression and good use of figures/tables.
+
+Experimental methodology is transparent, reproducible, and supported with dataset/code availability.
+
+Balanced and self-critical discussion of limitations.
+
+Weaknesses:
+
+Figures (particularly template-based results) sometimes lack readability (small fonts/legends).
+
+Some minor typographical inconsistencies ("Mediun class," inconsistent terminology).
+
+Future work directions (e.g., extension to PQL, hybrid models) could be described in greater operational detail.
+
+Justification:
+The study is implemented rigorously, with strong reproducibility. Minor presentation issues and limited future-path detailing prevent a perfect score.
+
+Overall Score: 3.8 / 5 (Recommendation: Major Revision)
+
+The article makes a valuable and original contribution, but improvements in model scope, error analysis, and practical impact discussion are needed before publication in its strongest form.
+
+
+Reviewer 2: This manuscript presents a clear and practically relevant evaluation of large language models for text to SQL in a process mining setting using the bilingual text2SQL4PM benchmark. The comparison across prompt styles and different numbers of in context examples is well structured. The additional analyses by SQL complexity and template categories are particularly helpful for diagnosing where current models succeed and fail. With a few clarifications and small additions, the paper would be even stronger and easier to reproduce.
+Suggestions for improvement:
+1. It would be helpful to spell out the few shot example selection more clearly. In particular, what the candidate pool is, what gets excluded, and how you avoid near duplicate intents beyond paraphrase removal.
+2. Please include the key generation settings for each model, like temperature, top p, max tokens, and whether you use retries or any stopping rules. This will make the results easier to reproduce.
+3. Execution accuracy can look a bit optimistic when the gold query returns an empty result. Reporting how often the gold output is empty, overall and also by complexity, would strengthen the evaluation.
+4. The related work section could be expanded slightly to better frame the prompt choices. A brief overview of common LLM based text to SQL prompting strategies, like decomposition prompting, schema filtering or candidate column selection, and lightweight self correction or refinement, would help readers interpret the comparisons.
+5. Please fix the typo "Mediun class" to "Medium class", and keep terminology consistent, especially "event" versus "activity".
