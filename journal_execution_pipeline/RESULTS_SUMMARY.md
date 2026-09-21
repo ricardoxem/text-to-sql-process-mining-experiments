@@ -43,7 +43,7 @@ Os resultados finais calculados foram:
 | GPT-5.4 | code-representation 5-shot | Ingles | 71,60% | 57,04% |
 | GPT-5.4 | code-representation 5-shot | Portugues | 72,39% | 55,77% |
 
-Arquivos esperados na maquina do laboratorio:
+Artefatos versionados no repositorio:
 
 ```text
 journal_execution_pipeline/outputs/openai_en_code5_gpt54/RESULTS_MODEL-gpt-5.4.txt
@@ -58,7 +58,7 @@ journal_execution_pipeline/evaluation_outputs/openai_pt_code5_gpt54_EX/score.tsv
 journal_execution_pipeline/evaluation_outputs/openai_pt_code5_gpt54_EM/score.tsv
 ```
 
-Observacao: em 2026-09-21, esses arquivos GPT-5.4 ainda nao estavam presentes nesta copia local do repositorio. Eles precisam ser copiados da maquina do laboratorio antes de um commit definitivo contendo todos os artefatos brutos do GPT-5.4.
+Os artefatos brutos do GPT-5.4 foram recuperados da maquina do laboratorio, copiados para este repositorio e versionados no commit `870fc2e` (`Add GPT-5.4 experiment outputs`).
 
 ## Custo do experimento GPT-5.4
 
@@ -87,7 +87,7 @@ Para a revisao do artigo, o ponto mais forte e reportar o aumento em EX, pois el
 
 ## Proximos passos recomendados
 
-1. Copiar da maquina do laboratorio os outputs e evaluation_outputs do GPT-5.4 para este repositorio.
-2. Commitar os artefatos brutos do GPT-5.4 junto com este resumo.
+1. Criar um documento em portugues descrevendo a nova fase de experimentos para a revisao do artigo.
+2. Gerar versoes equivalentes em Markdown e HTML para facilitar leitura e compartilhamento.
 3. Conferir se os resultados precisam ser reformatados para as tabelas do artigo.
 4. Decidir com a professora Sara e a Thais se novas rodadas devem incluir outros modelos ou apenas GPT-5.4 como atualizacao principal.

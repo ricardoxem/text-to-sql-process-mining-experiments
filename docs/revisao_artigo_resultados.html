@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Nova fase de experimentos para revisao do artigo</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.55; color: #222; max-width: 1060px; margin: 36px auto; padding: 0 24px; background: #f6f7f8; }
+    main { background: #fff; padding: 34px 42px; border-radius: 8px; box-shadow: 0 2px 14px rgba(0,0,0,.08); }
+    h1 { margin-top: 0; font-size: 30px; }
+    h2 { margin-top: 34px; border-bottom: 1px solid #ddd; padding-bottom: 6px; font-size: 21px; }
+    h3 { margin-top: 24px; font-size: 17px; }
+    code { background: #eef0f2; padding: 2px 5px; border-radius: 4px; }
+    pre { background: #202832; color: #f3f6f8; padding: 14px 16px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: transparent; padding: 0; color: inherit; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0 24px; font-size: 14px; }
+    th, td { border: 1px solid #d8dde3; padding: 8px 10px; text-align: left; vertical-align: top; }
+    th { background: #eef2f6; }
+    td:nth-child(n+3), th:nth-child(n+3) { text-align: right; }
+    .note { background: #f1f7ff; border-left: 4px solid #2b72c4; padding: 12px 16px; margin: 16px 0; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Nova fase de experimentos para revisao do artigo</h1>
+
+  <h2>1. Objetivo</h2>
+  <p>Este documento resume a nova fase de experimentos realizada para apoiar a revisao do artigo <strong>Text-to-SQL in Process Mining: Revisiting Strategies and Expanding the Discussion</strong>.</p>
+  <p>A principal motivacao foi verificar se a execucao do mesmo cenario experimental com modelos mais recentes poderia melhorar os resultados apresentados originalmente, especialmente na metrica <strong>Execution Accuracy (EX)</strong>.</p>
+
+  <h2>2. Contexto dos repositorios</h2>
+  <table>
+    <tr><th>Repositorio</th><th>Papel no trabalho</th></tr>
+    <tr><td><code>text-2-sql</code></td><td>Repositorio associado ao artigo/base do arXiv, usado como referencia historica e fonte do dataset, dos arquivos gold e dos bancos SQLite.</td></tr>
+    <tr><td><code>text-to-sql-process_mining</code></td><td>Repositorio associado ao artigo da revista. Passou a ser o repositorio central para a continuacao do trabalho, reproducao dos experimentos e armazenamento dos novos resultados.</td></tr>
+  </table>
+  <p>A partir dessa avaliacao, decidiu-se concentrar a nova fase no repositorio <code>text-to-sql-process_mining</code>, mantendo o <code>text-2-sql</code> apenas como referencia do dataset/base original.</p>
+
+  <h2>3. O que foi recuperado e organizado</h2>
+  <ul>
+    <li>os bancos SQLite em ingles e portugues;</li>
+    <li>os arquivos gold em ingles e portugues;</li>
+    <li>o avaliador adaptado usado para calcular EM e EX;</li>
+    <li>os scripts do novo pipeline de execucao;</li>
+    <li>os outputs brutos dos experimentos novos;</li>
+    <li>os arquivos de avaliacao com os scores obtidos.</li>
+  </ul>
+  <pre><code>journal_execution_pipeline/</code></pre>
+
+  <h2>4. Pipeline criado para os novos experimentos</h2>
+  <pre><code>journal_execution_pipeline/
+  configs/
+  src/
+  outputs/
+  evaluation_outputs/
+  evaluation_tools/
+  RESULTS_SUMMARY.md</code></pre>
+  <p>Esse pipeline permite executar modelos via OpenAI, executar modelos locais via Ollama, preparar saidas para o avaliador, calcular EM e EX e registrar metadados de execucao e custo.</p>
+
+  <h2>5. Dados e avaliacao</h2>
+  <table>
+    <tr><th>Metrica</th><th>Descricao</th></tr>
+    <tr><td>EM</td><td>Exact Match Accuracy. Mede a correspondencia textual/estrutural entre a SQL gerada e a SQL gold.</td></tr>
+    <tr><td>EX</td><td>Execution Accuracy. Mede se a SQL gerada retorna o mesmo resultado que a SQL gold quando executada no banco SQLite.</td></tr>
+  </table>
+  <div class="note">Para Text-to-SQL, EX tende a ser mais representativa, pois duas consultas SQL podem ser diferentes na forma textual e ainda assim produzir o mesmo resultado correto.</div>
+
+  <h2>6. Modelos executados nesta nova fase</h2>
+  <table>
+    <tr><th>Modelo</th><th>Execucao</th><th>Cenario</th></tr>
+    <tr><td>Llama 3 8B</td><td>Ollama</td><td>openAI-representation 0-shot</td></tr>
+    <tr><td>Llama 3.1 8B</td><td>Ollama</td><td>openAI-representation 0-shot</td></tr>
+    <tr><td>Llama 3.1 8B</td><td>Ollama</td><td>code-representation 5-shot</td></tr>
+    <tr><td>GPT-5.4</td><td>OpenAI API</td><td>code-representation 5-shot</td></tr>
+  </table>
+
+  <h2>7. Resultados obtidos</h2>
+  <h3>7.1 Resultados com Llama/Ollama</h3>
+  <table>
+    <tr><th>Modelo</th><th>Cenario</th><th>Idioma</th><th>EX</th><th>EM</th></tr>
+    <tr><td>Llama 3 8B</td><td>openAI-representation 0-shot</td><td>Ingles</td><td>36,37%</td><td>32,27%</td></tr>
+    <tr><td>Llama 3 8B</td><td>openAI-representation 0-shot</td><td>Portugues</td><td>36,13%</td><td>28,88%</td></tr>
+    <tr><td>Llama 3.1 8B</td><td>openAI-representation 0-shot</td><td>Ingles</td><td>39,15%</td><td>35,29%</td></tr>
+    <tr><td>Llama 3.1 8B</td><td>openAI-representation 0-shot</td><td>Portugues</td><td>36,62%</td><td>34,44%</td></tr>
+    <tr><td>Llama 3.1 8B</td><td>code-representation 5-shot</td><td>Ingles</td><td>52,51%</td><td>49,55%</td></tr>
+    <tr><td>Llama 3.1 8B</td><td>code-representation 5-shot</td><td>Portugues</td><td>50,51%</td><td>47,67%</td></tr>
+  </table>
+
+  <h3>7.2 Resultados com GPT-5.4</h3>
+  <table>
+    <tr><th>Modelo</th><th>Cenario</th><th>Idioma</th><th>EX</th><th>EM</th></tr>
+    <tr><td>GPT-5.4</td><td>code-representation 5-shot</td><td>Ingles</td><td>71,60%</td><td>57,04%</td></tr>
+    <tr><td>GPT-5.4</td><td>code-representation 5-shot</td><td>Portugues</td><td>72,39%</td><td>55,77%</td></tr>
+  </table>
+
+  <h2>8. Comparacao com o melhor resultado GPT reportado no artigo</h2>
+  <table>
+    <tr><th>Idioma</th><th>Metrica</th><th>GPT-3.5 artigo</th><th>GPT-5.4 novo</th><th>Diferenca</th></tr>
+    <tr><td>Ingles</td><td>EX</td><td>57,16%</td><td>71,60%</td><td>+14,44 p.p.</td></tr>
+    <tr><td>Portugues</td><td>EX</td><td>56,25%</td><td>72,39%</td><td>+16,14 p.p.</td></tr>
+    <tr><td>Ingles</td><td>EM</td><td>61,33%</td><td>57,04%</td><td>-4,29 p.p.</td></tr>
+    <tr><td>Portugues</td><td>EM</td><td>58,37%</td><td>55,77%</td><td>-2,60 p.p.</td></tr>
+  </table>
+
+  <h2>9. Interpretacao inicial</h2>
+  <p>O resultado mais relevante desta nova fase e o aumento expressivo em <strong>Execution Accuracy</strong> com GPT-5.4 nos dois idiomas.</p>
+  <p>A queda em EM nao necessariamente indica piora pratica, pois o modelo pode gerar consultas SQL diferentes da SQL gold, mas que retornam o mesmo resultado ao serem executadas. Por isso, para a discussao do artigo, o principal ponto positivo e a melhora em EX.</p>
+
+  <h2>10. Custo do experimento GPT-5.4</h2>
+  <table>
+    <tr><th>Idioma</th><th>Input tokens</th><th>Output tokens</th><th>Reasoning tokens</th><th>Custo estimado</th></tr>
+    <tr><td>Ingles</td><td>663.980</td><td>55.007</td><td>0</td><td>US$ 2,49</td></tr>
+    <tr><td>Portugues</td><td>725.975</td><td>56.251</td><td>0</td><td>US$ 2,66</td></tr>
+    <tr><td>Total</td><td>1.389.955</td><td>111.258</td><td>0</td><td>US$ 5,14</td></tr>
+  </table>
+
+  <h2>11. Arquivos versionados no repositorio</h2>
+  <pre><code>journal_execution_pipeline/outputs/openai_en_code5_gpt54/
+journal_execution_pipeline/outputs/openai_pt_code5_gpt54/
+journal_execution_pipeline/evaluation_outputs/openai_en_code5_gpt54_EX/
+journal_execution_pipeline/evaluation_outputs/openai_en_code5_gpt54_EM/
+journal_execution_pipeline/evaluation_outputs/openai_pt_code5_gpt54_EX/
+journal_execution_pipeline/evaluation_outputs/openai_pt_code5_gpt54_EM/</code></pre>
+  <p>Commit dos artefatos brutos do GPT-5.4:</p>
+  <pre><code>870fc2e Add GPT-5.4 experiment outputs</code></pre>
+
+  <h2>12. Proximos passos</h2>
+  <ol>
+    <li>Revisar as tabelas do artigo para incluir os resultados com GPT-5.4.</li>
+    <li>Discutir a diferenca entre EM e EX, destacando a importancia de EX para Text-to-SQL.</li>
+    <li>Avaliar se sera necessario rodar outros modelos atualizados ou se GPT-5.4 sera suficiente como evidencia principal.</li>
+    <li>Organizar a resposta aos avaliadores conectando os novos resultados com os pontos levantados na revisao.</li>
+    <li>Validar com a professora Sara e a Thais quais resultados entrarao na nova versao do artigo.</li>
+  </ol>
+</main>
+</body>
+</html>
