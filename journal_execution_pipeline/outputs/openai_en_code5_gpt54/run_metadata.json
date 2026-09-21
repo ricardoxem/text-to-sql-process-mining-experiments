@@ -1,0 +1,31 @@
+{
+  "run": {
+    "name": "openai_en_code5_gpt54",
+    "provider": "openai",
+    "model": "gpt-5.4",
+    "reasoning_effort": "none",
+    "language": "english",
+    "questions_path": "results/english/code-representation_5-shot/questions.json",
+    "pricing_per_million_tokens": {
+      "input": 2.5,
+      "output": 15.0
+    }
+  },
+  "questions_path": "/mnt/dados/home/rscheicher/repositories/text-to-sql-process-mining-experiments/results/english/code-representation_5-shot/questions.json",
+  "started_at_utc": "2026-06-24T11:57:47.289209+00:00",
+  "request": {
+    "instructions": "Return only one SQLite SQL query. Do not include explanation, markdown, or code fences.",
+    "max_output_tokens": 512,
+    "timeout_seconds": 180,
+    "max_retries": 5,
+    "sleep_between_requests_seconds": 0.0
+  },
+  "total_questions": 1655,
+  "finished_at_utc": "2026-06-24T12:34:38.373526+00:00",
+  "usage_totals": {
+    "input_tokens": 663980.0,
+    "output_tokens": 55007.0,
+    "reasoning_tokens": 0.0,
+    "estimated_cost_usd": 2.485054999999999
+  }
+}
