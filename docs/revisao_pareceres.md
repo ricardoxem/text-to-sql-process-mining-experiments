@@ -6,7 +6,26 @@ Este documento resume os principais pontos levantados pelos revisores no arquivo
 
 Os pareceres foram positivos quanto à originalidade, à organização metodológica e à contribuição do benchmark bilíngue para Text-to-SQL no domínio de Process Mining. A recomendação geral foi de **Major Revision**, com foco em ampliar a força experimental, melhorar a discussão qualitativa e reforçar a reprodutibilidade.
 
-## 2. Pontos fortes destacados
+
+## 2. Resumo de cada parecer
+
+### 2.1 Reviewer 1
+
+O Reviewer 1 avaliou o artigo como uma contribuição relevante e original, com desenho experimental claro, uso adequado das métricas EM e EX, análise por complexidade SQL e foco em um domínio ainda pouco explorado em Text-to-SQL: Process Mining. Também destacou positivamente a criação do benchmark bilíngue `text2SQL4PM`, a avaliação cross-lingual e o uso de diferentes estratégias de prompt.
+
+As principais críticas foram que os modelos avaliados não eram os mais recentes, o que reduzia a conexão com o estado da arte; que a análise qualitativa de erros ainda era limitada; e que o foco em SQL, embora justificável, poderia ser melhor conectado às práticas reais de Process Mining, especialmente ao uso de PQL. O parecer também apontou impacto prático ainda pouco desenvolvido, resultados originais modestos, problemas de legibilidade em algumas figuras, pequenos erros tipográficos e necessidade de detalhar melhor trabalhos futuros.
+
+A recomendação geral do Reviewer 1 foi **Major Revision**, com nota geral **3,8/5**. A direção sugerida foi fortalecer o artigo por meio de modelos mais atuais, análise qualitativa mais profunda, melhor discussão de impacto prático e ajustes de apresentação.
+
+### 2.2 Reviewer 2
+
+O Reviewer 2 considerou o manuscrito claro, bem estruturado e relevante para a avaliação de modelos de linguagem em Text-to-SQL no contexto de Process Mining. Destacou como pontos fortes a comparação entre estilos de prompt, o uso de diferentes quantidades de exemplos in-context e as análises por complexidade SQL e categorias de template, que ajudam a diagnosticar onde os modelos acertam ou falham.
+
+As sugestões de melhoria foram mais específicas e metodológicas. O revisor pediu maior clareza sobre como os exemplos few-shot são selecionados, incluindo conjunto candidato, exclusões e controle de intenções duplicadas ou muito próximas. Também solicitou a inclusão dos parâmetros de geração dos modelos, como temperature, top-p, max tokens, retries e stopping rules. Outro ponto importante foi a sugestão de reportar quantas queries gold retornam resultado vazio, pois isso pode tornar a Execution Accuracy otimista. Além disso, recomendou expandir os trabalhos relacionados sobre estratégias modernas de prompting para Text-to-SQL e corrigir inconsistências textuais, como o typo `Mediun class` e o uso de `event` versus `activity`.
+
+Em resumo, o Reviewer 2 não questionou a relevância geral do trabalho, mas pediu ajustes que melhoram reprodutibilidade, clareza metodológica e robustez da avaliação.
+
+## 3. Pontos fortes destacados
 
 Os revisores destacaram os seguintes aspectos positivos:
 
@@ -19,17 +38,17 @@ Os revisores destacaram os seguintes aspectos positivos:
 - disponibilidade de dataset, código e metodologia, favorecendo reprodutibilidade;
 - discussão equilibrada das limitações.
 
-## 3. Principais críticas e sugestões
+## 4. Principais críticas e sugestões
 
 As críticas e sugestões podem ser agrupadas nos seguintes temas.
 
-### 3.1 Atualização dos modelos avaliados
+### 4.1 Atualização dos modelos avaliados
 
 Um dos pontos centrais foi que os modelos avaliados originalmente não representavam mais o estado da arte, pois não incluíam modelos mais recentes, como GPT-4 ou alternativas equivalentes.
 
 Esse ponto está diretamente relacionado aos novos experimentos executados nesta fase, especialmente com GPT-5.4.
 
-### 3.2 Resultados modestos
+### 4.2 Resultados modestos
 
 O Reviewer 1 apontou que os melhores resultados originais, aproximadamente 48% em EM e 57% em EX, limitavam a aplicabilidade prática imediata.
 
@@ -40,13 +59,13 @@ A nova rodada com GPT-5.4 responde parcialmente a essa crítica, pois elevou a E
 | Inglês | 71,60% |
 | Português | 72,39% |
 
-### 3.3 Análise qualitativa de erros
+### 4.3 Análise qualitativa de erros
 
 Foi apontado que o artigo menciona erros e interpretações incorretas, mas não aprofunda tipologias de erro nem apresenta exemplos suficientes.
 
 Esse ponto ainda precisa ser trabalhado na revisão do manuscrito.
 
-### 3.4 Explicação da seleção few-shot
+### 4.4 Explicação da seleção few-shot
 
 O Reviewer 2 solicitou maior clareza sobre a seleção dos exemplos few-shot, incluindo:
 
@@ -57,7 +76,7 @@ O Reviewer 2 solicitou maior clareza sobre a seleção dos exemplos few-shot, in
 
 Esse ponto deve ser respondido metodologicamente no texto do artigo.
 
-### 3.5 Parâmetros de geração dos modelos
+### 4.5 Parâmetros de geração dos modelos
 
 Foi solicitada a inclusão dos principais parâmetros de geração, como:
 
@@ -69,7 +88,7 @@ Foi solicitada a inclusão dos principais parâmetros de geração, como:
 
 Essa sugestão está ligada à reprodutibilidade. Para os novos experimentos, os metadados e configurações foram versionados no repositório.
 
-### 3.6 Execution Accuracy com resultados vazios
+### 4.6 Execution Accuracy com resultados vazios
 
 O Reviewer 2 observou que a métrica EX pode parecer otimista quando a query gold retorna resultado vazio.
 
@@ -80,7 +99,7 @@ Foi sugerido reportar a frequência de gold queries com resultado vazio:
 
 Esse ponto ainda precisa de análise adicional no pipeline.
 
-### 3.7 Trabalhos relacionados e estratégias de prompting
+### 4.7 Trabalhos relacionados e estratégias de prompting
 
 Foi sugerido expandir a seção de trabalhos relacionados para contextualizar melhor estratégias modernas de prompting em Text-to-SQL, como:
 
@@ -90,19 +109,19 @@ Foi sugerido expandir a seção de trabalhos relacionados para contextualizar me
 - self-correction;
 - refinement leve.
 
-### 3.8 Alinhamento com Process Mining e PQL
+### 4.8 Alinhamento com Process Mining e PQL
 
 O Reviewer 1 observou que o foco em SQL é justificável, mas reduz a conexão direta com práticas usuais de Process Mining, que frequentemente usam PQL ou ferramentas específicas da área.
 
 A revisão deve reforçar melhor essa escolha e indicar caminhos futuros mais concretos para PQL.
 
-### 3.9 Aplicabilidade prática e impacto industrial
+### 4.9 Aplicabilidade prática e impacto industrial
 
 Foi apontado que o artigo poderia discutir melhor cenários de adoção prática, como integração com ferramentas de BI, BPM ou Process Mining.
 
 Esse ponto deve ser tratado na introdução, discussão ou seção de implicações práticas.
 
-### 3.10 Melhorias de apresentação
+### 4.10 Melhorias de apresentação
 
 Foram mencionados problemas menores de apresentação:
 
@@ -110,7 +129,7 @@ Foram mencionados problemas menores de apresentação:
 - typo `Mediun class`, que deve ser corrigido para `Medium class`;
 - inconsistência terminológica, especialmente entre `event` e `activity`.
 
-## 4. Relação entre os pareceres e o que já foi feito
+## 5. Relação entre os pareceres e o que já foi feito
 
 | Ponto dos revisores | O que já foi feito | Situação |
 |---|---|---|
@@ -126,7 +145,7 @@ Foram mencionados problemas menores de apresentação:
 | Aplicabilidade prática | Ainda precisa ser expandida | Pendente |
 | Figuras, typos e terminologia | Ainda precisa revisão textual | Pendente |
 
-## 5. Resultados novos mais relevantes para a resposta aos revisores
+## 6. Resultados novos mais relevantes para a resposta aos revisores
 
 Os novos resultados com GPT-5.4 são o principal elemento experimental para responder às críticas sobre modelos desatualizados e desempenho limitado.
 
@@ -139,7 +158,7 @@ Os novos resultados com GPT-5.4 são o principal elemento experimental para resp
 
 A interpretação inicial é que o modelo mais recente melhora substancialmente a capacidade de gerar SQLs que retornam o resultado correto, mesmo que nem sempre reproduza exatamente a mesma forma textual da SQL gold.
 
-## 6. Próximas ações sugeridas
+## 7. Próximas ações sugeridas
 
 Para avançar na revisão do artigo, recomenda-se:
 
@@ -153,7 +172,7 @@ Para avançar na revisão do artigo, recomenda-se:
 8. Reforçar a discussão sobre SQL, PQL e aplicabilidade em Process Mining.
 9. Revisar figuras, typos e terminologia antes da nova submissão.
 
-## 7. Documentos relacionados
+## 8. Documentos relacionados
 
 A documentação detalhada dos novos experimentos está em:
 
