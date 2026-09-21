@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Resumo dos pareceres e encaminhamentos para a revisão do artigo</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.55; color: #222; max-width: 1060px; margin: 36px auto; padding: 0 24px; background: #f6f7f8; }
+    main { background: #fff; padding: 34px 42px; border-radius: 8px; box-shadow: 0 2px 14px rgba(0,0,0,.08); }
+    h1 { margin-top: 0; font-size: 30px; }
+    h2 { margin-top: 34px; border-bottom: 1px solid #ddd; padding-bottom: 6px; font-size: 21px; }
+    h3 { margin-top: 24px; font-size: 17px; }
+    code { background: #eef0f2; padding: 2px 5px; border-radius: 4px; }
+    pre { background: #202832; color: #f3f6f8; padding: 14px 16px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: transparent; padding: 0; color: inherit; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0 24px; font-size: 14px; }
+    th, td { border: 1px solid #d8dde3; padding: 8px 10px; text-align: left; vertical-align: top; }
+    th { background: #eef2f6; }
+    .num, td:nth-child(n+3) { text-align: right; }
+    .note { background: #f1f7ff; border-left: 4px solid #2b72c4; padding: 12px 16px; margin: 16px 0; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Resumo dos pareceres e encaminhamentos para a revisão do artigo</h1>
+  <p>Este documento resume os principais pontos levantados pelos revisores no arquivo <code>papers/revisoes.txt</code> e organiza possíveis encaminhamentos para a nova fase de revisão do artigo <strong>Text-to-SQL in Process Mining: Revisiting Strategies and Expanding the Discussion</strong>.</p>
+
+  <h2>1. Visão geral dos pareceres</h2>
+  <p>Os pareceres foram positivos quanto à originalidade, à organização metodológica e à contribuição do benchmark bilíngue para Text-to-SQL no domínio de Process Mining. A recomendação geral foi de <strong>Major Revision</strong>, com foco em ampliar a força experimental, melhorar a discussão qualitativa e reforçar a reprodutibilidade.</p>
+
+  <h2>2. Pontos fortes destacados</h2>
+  <ul>
+    <li>desenho experimental claro e sistemático;</li>
+    <li>uso combinado das métricas EM e EX;</li>
+    <li>análise por complexidade SQL e por templates;</li>
+    <li>foco original em Process Mining;</li>
+    <li>criação e uso do benchmark bilíngue <code>text2SQL4PM</code>;</li>
+    <li>comparação entre diferentes estratégias de prompt e números de exemplos in-context;</li>
+    <li>disponibilidade de dataset, código e metodologia;</li>
+    <li>discussão equilibrada das limitações.</li>
+  </ul>
+
+  <h2>3. Principais críticas e sugestões</h2>
+  <h3>3.1 Atualização dos modelos avaliados</h3>
+  <p>Um dos pontos centrais foi que os modelos avaliados originalmente não representavam mais o estado da arte. Esse ponto está diretamente relacionado aos novos experimentos com GPT-5.4.</p>
+
+  <h3>3.2 Resultados modestos</h3>
+  <p>O Reviewer 1 apontou que os melhores resultados originais, aproximadamente 48% em EM e 57% em EX, limitavam a aplicabilidade prática imediata.</p>
+  <table>
+    <tr><th>Idioma</th><th>EX com GPT-5.4</th></tr>
+    <tr><td>Inglês</td><td class="num">71,60%</td></tr>
+    <tr><td>Português</td><td class="num">72,39%</td></tr>
+  </table>
+
+  <h3>3.3 Análise qualitativa de erros</h3>
+  <p>Foi apontado que o artigo menciona erros e interpretações incorretas, mas não aprofunda tipologias de erro nem apresenta exemplos suficientes. Esse ponto ainda precisa ser trabalhado.</p>
+
+  <h3>3.4 Explicação da seleção few-shot</h3>
+  <p>O Reviewer 2 solicitou maior clareza sobre conjunto candidato, exclusões, remoção de paráfrases e prevenção de intenções duplicadas ou muito próximas.</p>
+
+  <h3>3.5 Parâmetros de geração dos modelos</h3>
+  <p>Foi solicitada a inclusão de temperature, top-p, max tokens, retries e stopping rules. Para os novos experimentos, os metadados e configurações foram versionados no repositório.</p>
+
+  <h3>3.6 Execution Accuracy com resultados vazios</h3>
+  <p>Foi sugerido reportar a frequência de gold queries com resultado vazio, no total e por classe de complexidade. Esse ponto ainda precisa de análise adicional.</p>
+
+  <h3>3.7 Trabalhos relacionados e estratégias de prompting</h3>
+  <p>Foi sugerido expandir a seção de trabalhos relacionados para contextualizar decomposition prompting, schema filtering, candidate column selection, self-correction e refinement leve.</p>
+
+  <h3>3.8 Alinhamento com Process Mining e PQL</h3>
+  <p>A revisão deve reforçar a justificativa do foco em SQL e indicar caminhos futuros mais concretos para PQL.</p>
+
+  <h3>3.9 Aplicabilidade prática e impacto industrial</h3>
+  <p>O artigo pode discutir melhor cenários de adoção prática, como integração com ferramentas de BI, BPM ou Process Mining.</p>
+
+  <h3>3.10 Melhorias de apresentação</h3>
+  <p>Foram mencionados problemas menores: figuras com fontes/legendas pequenas, typo <code>Mediun class</code> e inconsistência terminológica entre <code>event</code> e <code>activity</code>.</p>
+
+  <h2>4. Relação entre os pareceres e o que já foi feito</h2>
+  <table>
+    <tr><th>Ponto dos revisores</th><th>O que já foi feito</th><th>Situação</th></tr>
+    <tr><td>Modelos avaliados não são os mais atuais</td><td>Foram executados novos experimentos com GPT-5.4 e Llama 3.1</td><td>Parcialmente respondido</td></tr>
+    <tr><td>Resultados originais modestos</td><td>GPT-5.4 elevou EX para 71,60% em inglês e 72,39% em português</td><td>Respondido com novos resultados</td></tr>
+    <tr><td>Reprodutibilidade</td><td>Pipeline, outputs, scores e metadados foram versionados</td><td>Avanço importante</td></tr>
+    <tr><td>Parâmetros de geração</td><td>Configurações e metadados dos novos experimentos foram salvos</td><td>Precisa ser descrito no artigo</td></tr>
+    <tr><td>Seleção few-shot pouco clara</td><td>O cenário code-representation 5-shot foi reproduzido no pipeline</td><td>Precisa explicação textual detalhada</td></tr>
+    <tr><td>EX com gold vazio</td><td>Ainda não analisado</td><td>Pendente</td></tr>
+    <tr><td>Análise qualitativa de erros</td><td>Ainda não aprofundada</td><td>Pendente</td></tr>
+    <tr><td>Trabalhos relacionados sobre prompting</td><td>Ainda não revisado no manuscrito</td><td>Pendente</td></tr>
+    <tr><td>Discussão sobre PQL</td><td>Ainda precisa ser fortalecida</td><td>Pendente</td></tr>
+    <tr><td>Aplicabilidade prática</td><td>Ainda precisa ser expandida</td><td>Pendente</td></tr>
+    <tr><td>Figuras, typos e terminologia</td><td>Ainda precisa revisão textual</td><td>Pendente</td></tr>
+  </table>
+
+  <h2>5. Resultados novos mais relevantes para a resposta aos revisores</h2>
+  <table>
+    <tr><th>Idioma</th><th>Métrica</th><th>GPT-3.5 artigo</th><th>GPT-5.4 novo</th><th>Diferença</th></tr>
+    <tr><td>Inglês</td><td>EX</td><td>57,16%</td><td>71,60%</td><td>+14,44 p.p.</td></tr>
+    <tr><td>Português</td><td>EX</td><td>56,25%</td><td>72,39%</td><td>+16,14 p.p.</td></tr>
+    <tr><td>Inglês</td><td>EM</td><td>61,33%</td><td>57,04%</td><td>-4,29 p.p.</td></tr>
+    <tr><td>Português</td><td>EM</td><td>58,37%</td><td>55,77%</td><td>-2,60 p.p.</td></tr>
+  </table>
+  <div class="note">A interpretação inicial é que o modelo mais recente melhora substancialmente a capacidade de gerar SQLs que retornam o resultado correto, mesmo que nem sempre reproduza exatamente a mesma forma textual da SQL gold.</div>
+
+  <h2>6. Próximas ações sugeridas</h2>
+  <ol>
+    <li>Incorporar os resultados do GPT-5.4 nas tabelas principais do artigo.</li>
+    <li>Adicionar uma discussão explícita sobre a diferença entre EM e EX.</li>
+    <li>Explicar melhor a seleção de exemplos few-shot.</li>
+    <li>Documentar parâmetros de geração dos modelos.</li>
+    <li>Implementar ou calcular a análise de gold queries com resultado vazio.</li>
+    <li>Criar uma análise qualitativa de erros com exemplos representativos.</li>
+    <li>Expandir trabalhos relacionados sobre estratégias modernas de prompting para Text-to-SQL.</li>
+    <li>Reforçar a discussão sobre SQL, PQL e aplicabilidade em Process Mining.</li>
+    <li>Revisar figuras, typos e terminologia antes da nova submissão.</li>
+  </ol>
+
+  <h2>7. Documentos relacionados</h2>
+  <pre><code>docs/revisao_artigo_resultados.md
+docs/revisao_artigo_resultados.html
+journal_execution_pipeline/RESULTS_SUMMARY.md</code></pre>
+</main>
+</body>
+</html>

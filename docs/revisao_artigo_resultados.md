@@ -149,7 +149,16 @@ O commit com os artefatos brutos do GPT-5.4 é:
 870fc2e Add GPT-5.4 experiment outputs
 ```
 
-## 12. Próximos passos
+## 12. Relação com os pareceres
+
+O resumo dos pareceres dos revisores e dos encaminhamentos sugeridos para a revisão do artigo está em:
+
+```text
+docs/revisao_pareceres.md
+docs/revisao_pareceres.html
+```
+
+## 13. Próximos passos
 
 Os próximos passos sugeridos para a revisão do artigo são:
 
